@@ -125,6 +125,9 @@ cmdPower s ' From cmdPower'
 // This is my module  From cmdPower
 ```
 
+### 示例代码
+
+示例代码，请参考: [myCmd](https://github.com/zhangwenan/front-end-skills/tree/master/examples/myCmd)
 
 
 
