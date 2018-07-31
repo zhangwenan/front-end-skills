@@ -176,5 +176,11 @@ PageDOWN=Fn+下方向
 |⌘Home / End |Scroll to top/bottom|
 
 
+####    vscode命令行添加字体支持
+
+```
+"terminal.integrated.fontFamily": "Meslo LG M for Powerline",
+```
+
 
 <https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos.pdf>
