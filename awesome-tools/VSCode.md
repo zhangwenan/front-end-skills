@@ -9,7 +9,7 @@ PageUP=Fn+上方向
 PageDOWN=Fn+下方向
 向前Delete=Fn+delete键
 
-### 常用快捷键  
+### 常用快捷键
 |快捷键|描述|
 |-|-|
 |`⇧⌘P`, `F1`    |   显示命令输入框|
@@ -80,40 +80,40 @@ PageDOWN=Fn+下方向
 |⇧⌘Space|Trigger parameter hints|
 |⇧⌥F|Format document|
 |⌘K ⌘F|Format selection|
-|F12|Go to Definition|
-|⌥F12|Peek Definition|
-|⌘K F12|Open Definition to the side|
+|F12|转到定义|
+|⌥F12|查看定义,直接有弹窗能看到定义代码|
+|⌘K F12|在旁边的视图,打开定义文件|
 |⌘.|Quick Fix|
-|⇧F12|Show References|
-|F2|Rename Symbol|
-|⌘K ⌘X|Trim trailing whitespace|
-|⌘K M|Change file language|
+|⇧F12|显示相关信息|
+|F2|重命名标识符|
+|⌘K ⌘X|删除行尾的空白字符|
+|⌘K M|修改文件语言,c++/bash/css等|
 
 ### 导航
 
 |快捷键|描述|
 |-|-|
 |⌘T|Show all Symbols|
-|⌃G|Go to Line...|
-|⌘P|Go to File...|
+|⌃G|跳转到行|
+|⌘P|跳转到文件|
 |⇧⌘O |Go to Symbol...|
-|⇧⌘M|Show Problems panel|
-|F8 / ⇧F8 |Go to next/previous error or warning|
-|⌃⇧Tab |Navigate editor group history|
-|⌃- / ⌃⇧- |Go back/forward|
+|⇧⌘M|显示错误提示框|
+|F8 / ⇧F8 |跳转到下一个/上一个错误或者警告|
+|⌃⇧Tab | 在已经打开的编辑器里切换|
+|⌃- / ⌃⇧- | 在已打开的编辑器里前后切换|
 |⌃⇧M |Toggle Tab moves focus|
 
 ### 编辑器管理
 
 |快捷键|描述|
 |-|-|
-|⌘W|Close editor|
+|⌘W|关闭编辑器|
 |⌘K F |Close folder|
-|⌘\ |Split editor|
-|⌘1 / ⌘2 / ⌘3 |Focus into 1st, 2nd, 3rd editor group|
-|⌘K ⌘← / ⌘K ⌘→ |Focus into previous/next editor group|
+|⌘\ |拆分编辑器|
+|⌘1 / ⌘2 / ⌘3 | 让第一、第二、第三个编辑器获得焦点|
+|⌘K ⌘← / ⌘K ⌘→ | 让上一个/下一个编辑器获得焦点|
 |⌘K ⇧⌘← / ⌘K ⇧⌘→ |Move editor left/right|
-|⌘K ← / ⌘K → |Move active editor group|
+|⌘K ← / ⌘K → |移动当前编辑器|
 
 
 ### 文件管理
