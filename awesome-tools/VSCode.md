@@ -19,6 +19,7 @@ PageDOWN=Fn+下方向
 |`⌘,`         |   用户设置 User Settings|
 |`⌘K ⌘S`      |   设置快捷键 Keyboard Shortcuts|
 
+
 ### 编辑操作 Basic editing
 |快捷键|描述|
 |-|-|
@@ -28,7 +29,7 @@ PageDOWN=Fn+下方向
 |`⇧⌥↑`, `⇧⌥↓`|  复制当前行到上方, 复制当前行到下方 Copy line down/up|
 |`⇧⌘K`|     删除当前行 Delete line|
 |`⌘Enter`/`⇧⌘Enter`|    向下新增一行/向上新增一行 Insert line below/above|
-|`⇧⌘\`|     Jump to matching bracket|
+|`⇧⌘\`|     跳转到匹配的括号 Jump to matching bracket|
 |`⌘]`/`⌘[`|     缩进/反向缩进 Indent/outdent line|
 |`Home`/`End`|  到行首/到行尾 Go to beginning/end of line|
 |`⌘↑`/`⌘↓`| 到文件顶/到文件底 Go to beginning/end of file|
@@ -52,8 +53,8 @@ PageDOWN=Fn+下方向
 |`⌘U`|取消最后一次光标操作 Undo last cursor operation|
 |`⇧⌥I`|在所有选中行的行尾添加光标 Insert cursor at end of each line selected|
 |`⌘I`|选中当前行 Select current line|
-|`⇧⌘L`|Select all occurrences of current selection|
-|`⌘F2`|Select all occurrences of current word|
+|`⇧⌘L`|选中当前选中内容的所有匹配项 Select all occurrences of current selection|
+|`⌘F2`|选中光标所在文字的所有匹配项 Select all occurrences of current word|
 |`⌃⇧⌘→`/`⌃⇧⌘←`|扩大/收缩选区 Expand / shrink selection|
 |`⇧⌥`+ drag mouse|  根据鼠标圈定范围，区域选择 Column (box) selection|
 |`⇧⌥⌘↑`/`⇧⌥⌘↓`| 根据上下方向键，区域选择 Column (box) selection up/down|
@@ -70,6 +71,7 @@ PageDOWN=Fn+下方向
 |`⌥Enter`|选中所有搜索结果 Select all occurrences of Find match|
 |`⌘D`|选中下一个 Add selection to next Find match|
 |`⌘K ⌘D`|Move last selection to next Find match|
+
 
 
 ###  Rich languages editing
@@ -183,5 +185,5 @@ st, 2nd, 3rd editor group|
 "terminal.integrated.fontFamily": "Meslo LG M for Powerline",
 ```
 
-
+翻译参考: https://segmentfault.com/a/1190000007688656
 <https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos.pdf>
