@@ -37,6 +37,22 @@ commitizen init cz-conventional-changelog --save-dev --save-exact
 
 
 
+##  安装standard-changelog
+
+Github地址: [standard-changelog](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/standard-changelog)
+
+```
+npm install -g standard-changelog
+```
+
+##  使用standard-changelog
+
+```
+cd project
+standard-changelog
+```
+
+
 
 
 
