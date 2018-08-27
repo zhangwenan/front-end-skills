@@ -69,6 +69,7 @@ git reset HEAD~2    // 将HEAD从顶端的commit往下移动两个更早的commi
 ![git reset mixed](./git-reset-mixed.png)
 
 
-
+working tree, index, commit
+https://blog.csdn.net/heart_mine/article/details/79424591
 
 http://marklodato.github.io/visual-git-guide/index-zh-cn.html
