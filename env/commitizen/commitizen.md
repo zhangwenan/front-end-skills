@@ -1,0 +1,40 @@
+
+
+仓库地址: <https://github.com/commitizen/cz-cli>
+
+
+### 安装commitizen
+
+```
+npm install -g commitizen
+```
+
+### commitizen的使用
+
+```
+git add .
+git cz
+```
+
+### commitizen风格适配器
+
+```
+commitizen init cz-conventional-changelog --save-dev --save-exact
+```
+
+####    可用的风格
+
+1.  [cz-conventional-changelog]<https://www.npmjs.com/package/cz-conventional-changelog>
+2.  [cz-jira-smart-commit]<https://www.npmjs.com/package/cz-jira-smart-commit>
+3.  [rb-conventional-changelog]<https://www.npmjs.com/package/rb-conventional-changelog>
+4.  [cz-mapbox-changelog]<https://www.npmjs.com/package/cz-mapbox-changelog>
+5.  [cz-customizable]<https://github.com/leonardoanalista/cz-customizable>
+6.  [commitlint]<https://github.com/marionebl/commitlint>
+7.  [vscode-commitizen]<https://github.com/KnisterPeter/vscode-commitizen>
+8.  [cz-emoji]<https://github.com/ngryman/cz-emoji>
+
+
+
+
+
+
