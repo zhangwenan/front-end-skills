@@ -20,6 +20,8 @@ git cz
 
 ```
 commitizen init cz-conventional-changelog --save-dev --save-exact
+// 只针对当前的项目。
+// 该操作会对当前的package.json添加相关配置
 ```
 
 ####    可用的风格
