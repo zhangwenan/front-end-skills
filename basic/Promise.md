@@ -678,6 +678,8 @@ console.log('next');
 // next
 ```
 
+使用Promise.try的好处, <http://cryto.net/~joepie91/blog/2016/05/11/what-is-promise-try-and-why-does-it-matter/>
+
 事实上，Promise.try存在已久，Promise 库[Bluebird](http://bluebirdjs.com/docs/api/promise.try.html)、[Q](https://github.com/kriskowal/q/wiki/API-Reference#promisefcallargs)和[when](https://github.com/cujojs/when/blob/master/docs/api.md#whentry)，早就提供了这个方法。
 
 
