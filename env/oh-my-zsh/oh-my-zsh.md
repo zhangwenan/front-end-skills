@@ -123,6 +123,19 @@ vim 打开 `zsh-autosuggestions.zsh` ，修改配置为 `ZSH_AUTOSUGGEST_HIGHLIG
    `source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh`
 3. 让配置生效。`source ~/.zshrc`
 
+### 配置git命令的缩写
+
+```
+touch ~/.alias
+vim ~/.alias
+## 添加如下一行
+alias gs="git status"
+
+vim ~/.zshrc
+##  .zshrc文件底部添加
+source ~/.alias
+```
+配置生效后，就能使用 `gs` 来查看git的状态了
 
 
 好了，现在我们的终端应该已经6到飞起了。
