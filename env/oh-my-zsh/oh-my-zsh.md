@@ -126,6 +126,7 @@ vim 打开 `zsh-autosuggestions.zsh` ，修改配置为 `ZSH_AUTOSUGGEST_HIGHLIG
 ### 配置git命令的缩写
 
 ```
+## 需要注意的是，以下操作，请在系统默认的终端中vim打开。在iterm2下操作后，总是无法生效。很奇怪
 touch ~/.alias
 vim ~/.alias
 ## 添加如下一行
