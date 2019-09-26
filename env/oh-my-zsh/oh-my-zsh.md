@@ -146,7 +146,9 @@ source ~/.alias
 ### 其他参考
 https://blog.csdn.net/qianghaohao/article/details/79440961
 
-
+### prezto
+prezto还没试过，有时间的小伙伴可以试试看
+https://www.jianshu.com/p/e4973be9c9fb
 
 
 
