@@ -129,6 +129,8 @@ vim 打开 `zsh-autosuggestions.zsh` ，修改配置为 `ZSH_AUTOSUGGEST_HIGHLIG
 
 
 
+### 其他参考
+https://blog.csdn.net/qianghaohao/article/details/79440961
 
 
 
