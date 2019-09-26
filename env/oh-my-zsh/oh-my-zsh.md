@@ -64,6 +64,20 @@ iTerm2比Mac自带的终端更加强大，重点是不要钱。直接官网 <htt
 ZSH_THEME="agnoster"
 ```
 
+##### 修改主题细节，比如去掉命令行的机器名
+
+可以打开`vim ~/.oh-my-zsh/themes/agnoster.zsh-theme`，然后，
+
+```
+prompt_context() {
+  if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
+#   prompt_segment black default "%(!.%{%F{yellow}%}.)%n@%m" 修改成下一行
+    prompt_segment black default "testUser"
+  fi
+}
+
+## 改完之后，控制台的开始位置，就只会显示testUser
+```
 
 
 应用这个主题需要特殊的字体支持，否则会出现乱码情况。
