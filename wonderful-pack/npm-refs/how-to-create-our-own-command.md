@@ -120,6 +120,8 @@ node bin/cmdPower.js s ' What a wonderful thing'
 最后，在当前目录下，执行`npm link`,就会将`cmdPower`命令加入到全局的symbolic link，我们就能直接使用`cmdPower`命令了。
 另外，使用`npm install . -g`也可以达到相同的效果。
 
+参考: https://www.jianshu.com/p/aaa7db89a5b2
+
 ```
 cmdPower s ' From cmdPower'
 // This is my module  From cmdPower
