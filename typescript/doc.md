@@ -4,6 +4,47 @@
 npm install -g typescript
 ```
 
+
+##  数组
+```
+let list: number[] = [1, 2, 3];
+
+// 等同于。以下是数组泛型的写法
+let list: Array<number> = [1, 2, 3];
+```
+
+##  元组 Tuple
+元组类型允许表示一个已知*元素数量*和*类型*的**数组**，各元素的类型不必相同。
+
+```
+let x: [number, string];
+x = [10, 'hello'];  // OK
+x = ['hello', 10];  // Error
+
+// 当访问一个越界的元素，会使用`联合类型`替代。
+x[3] = 'world'; // OK, 字符串可以赋值给(string | number)类型
+console.log(x[5].toString()); // OK, 'string' 和 'number' 都有 toString
+x[6] = true; // Error, 布尔不是(string | number)类型
+```
+
+##  枚举
+```
+enum Color {Red, Green, Blue}
+let c: Color = Color.Green;
+
+console.log(Color.Red, Color.Green, Color.Blue);    // 0  1  2
+// 枚举类型的值，默认从0开始递增。
+
+enum E {E1, E2 = 5, E3, E4, E5 = 100, E6}
+console.log(E.E1, E.E2, E.E3, E.E4, E.E5, E.E6);    // 0 5 6 7 100 101
+// 枚举类型，后一个成员的值，是前一个成员的值+1
+
+// 枚举类型，可以通过数值进行反查
+console.log(E[100]);    // 'E5'
+```
+
+
+
 ##  类型注解
 
 greeter.ts
