@@ -162,19 +162,162 @@ useEffect(() => {
 }, [name]); // 只有name改变的时候，useEffect才会被执行
 ```
 
+手动维护比较麻烦而且可能遗漏，因此可以利用 [eslint](https://github.com/facebook/react/issues/14920) 插件自动提示。
+![eslint](https://user-images.githubusercontent.com/810438/54288712-d3615a00-459f-11e9-82a6-904442995d2f.gif)
 
 
 
+```
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setCount(count + 1);
+    }, 1000);
+    return () => clearInterval(id);
+  }, []); // 实际依赖count，但指定了一个空，达到了只执行一次的效果
+  // 如果这里按实际情况指定count，那么，代码可以拿到最新的count。
+  // 但，计时器就不准了，因为每次 count 变化时都会销毁并重新计时。
+  // 并且，频繁 生成/销毁 定时器带来了一定性能负担。
+
+  return <h1>{count}</h1>;
+}
+```
+但是，由于 useEffect 符合 Capture Value 的特性，拿到的 count 值永远是初始化的 0。相当于 setInterval 永远在 count 为 0 的 Scope 中执行，你后续的 setCount 操作并不会产生任何作用。
+
+```
+useEffect(() => {
+  const id = setInterval(() => {
+    // 采用回调写法。去掉对外部变量的依赖
+    setCount(c => c + 1);
+  }, 1000);
+  return () => clearInterval(id);
+}, []);
+```
+
+####  将更新与动作解耦
+
+如果遇到依赖`state`中的2个以上的变量，那么，上面的方式就无法解决了。
+
+```
+useEffect(() => {
+  const id = setInterval(() => {
+    setCount(c => c + step);
+    // 回调模式，并不能同时处理state中的多个变量
+  }, 1000);
+  return () => clearInterval(id);
+}, [step]);
+```
+
+使用`useReducer`，需要将更新与动作解耦
+```
+const [state, dispatch] = useReducer(reducer, initialState);
+const { count, step } = state;
+
+useEffect(() => {
+  const id = setInterval(() => {
+    dispatch({ type: "tick" }); // Instead of setCount(c => c + step);
+  }, 1000);
+  return () => clearInterval(id);
+}, [dispatch]);
+```
+
+### 将 Function 挪到 Effect 里
+那么如果函数定义不在 useEffect 函数体内，不仅可能会遗漏依赖，而且 eslint 插件也无法帮助你自动收集依赖。
+因此，建议将函数定义放在Effect里。但是，放在Effect里面，就不方便复用。
+对于不依赖 Function Component内部变量的函数，都可以安全的抽出去。
+
+
+对于依赖Function Component内部变量的函数，又想写在Effect外面的。就使用 `useCallback`来处理吧。
+
+```
+function Parent() {
+  const [query, setQuery] = useState("react");
+
+  // ✅ Preserves identity until query changes
+  const fetchData = useCallback(() => {
+    const url = "https://hn.algolia.com/api/v1/search?query=" + query;
+    // ... Fetch data and return it ...
+  }, [query]); // ✅ Callback deps are OK
+
+  return <Child fetchData={fetchData} />;
+}
+
+function Child({ fetchData }) {
+  let [data, setData] = useState(null);
+
+  useEffect(() => {
+    fetchData().then(setData);
+  }, [fetchData]); // ✅ Effect deps are OK
+
+  // ...
+}
+```
+由于函数也具有 Capture Value 特性，经过 useCallback 包装过的函数可以当作普通变量作为 useEffect 的依赖。
+useCallback 做的事情，就是在其依赖变化时，返回一个新的函数引用，触发 useEffect 的依赖变化，并激活其重新执行。
+
+### useCallback 带来的好处
+
+在 Class Component 的代码里，如果希望参数变化就重新取数，你不能直接比对取数函数的 Diff：
+
+```
+componentDidUpdate(prevProps) {
+  // 🔴 This condition will never be true
+  if (this.props.fetchData !== prevProps.fetchData) {
+    this.props.fetchData();
+  }
+}
+```
+
+而是，应该比对取数参数是否变化：
+
+```
+componentDidUpdate(prevProps) {
+  if (this.props.query !== prevProps.query) {
+    this.props.fetchData();
+  }
+}
+```
+
+但这种代码不内聚，一旦取数参数发生变化(比如，参数数量变量，参数名变了)，就会引发多处代码的维护危机。
+
+反观 Function Component 中利用 `useCallback` 封装的取数函数，可以直接作为依赖传入 useEffect，
+`useEffect` 只要关心取数函数是否变化，而取数参数的变化在 `useCallback` 时关心，再配合 eslint 插件的扫描，能做到 依赖不丢、逻辑内聚，从而容易维护。
 
 
 
+```
+function Article({ id }) {
+  const [article, setArticle] = useState(null);
 
+  // 取数函数：只关心依赖的 id
+  const fetchArticle = useCallback(async () => {
+    const article = await API.fetchArticle(id);
+    if (!didCancel) {
+      setArticle(article);
+    }
+  }, [id]);
 
+  // 副作用，只关心依赖了取数函数
+  useEffect(() => {
+    // didCancel 赋值与变化的位置更内聚
+    let didCancel = false;
+    fetchArticle(didCancel);
+
+    return () => {
+      didCancel = true;
+    };
+  }, [fetchArticle]);
+
+  // ...
+}
+```
 
 
 
 ##  其他参考
-a-complete-guide-to-useeffect: https://overreacted.io/a-complete-guide-to-useeffect/
+a-complete-guide-to-useeffect: https://overreacted.io/zh-hans/a-complete-guide-to-useeffect/
 精读Function Component 与 Class Component : https://github.com/dt-fe/weekly/blob/master/95.%E7%B2%BE%E8%AF%BB%E3%80%8AFunction%20VS%20Class%20%E7%BB%84%E4%BB%B6%E3%80%8B.md
 精读React hook: https://github.com/dt-fe/weekly/blob/master/79.%E7%B2%BE%E8%AF%BB%E3%80%8AReact%20Hooks%E3%80%8B.md
 怎么用React Hook造轮子 https://github.com/dt-fe/weekly/blob/master/80.%E7%B2%BE%E8%AF%BB%E3%80%8A%E6%80%8E%E4%B9%88%E7%94%A8%20React%20Hooks%20%E9%80%A0%E8%BD%AE%E5%AD%90%E3%80%8B.md
