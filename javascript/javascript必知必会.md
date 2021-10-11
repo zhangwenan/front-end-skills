@@ -16,6 +16,8 @@ substring
 substr
 parseInt
 parseFloat
+join
+concat
 
 
 # ES6

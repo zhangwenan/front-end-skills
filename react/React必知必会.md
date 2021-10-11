@@ -95,3 +95,31 @@ https://github.com/facebook/react/tree/master/packages/react-devtools
 ## React.lazy, Suspense, error boundary
 
 ## React.createContext
+
+
+## Diffing算法
+
+经典例子：
+展示使用下标作为 key 时导致的问题：https://react.docschina.org/redirect-to-codepen/reconciliation/index-used-as-key
+不使用下标作为 key 的例子的版本，修复了重新排列，排序，以及在列表头插入的问题 ：https://react.docschina.org/redirect-to-codepen/reconciliation/no-index-used-as-key
+
+
+# React元素和React组件
+元素描述了你在屏幕上想看到的内容。React 元素是不可变对象。通常不会直接使用元素，而是从组件中返回元素。
+
+元素如下：
+```
+const element = <h1>Hello, world</h1>;
+```
+
+React 组件是可复用的小的代码片段，它们返回要在页面中渲染的 React 元素。
+React 组件的最简版本是，一个返回 React 元素的普通 JavaScript 函数：
+```
+function Welcome(props) {
+  return <h1>Hello, {props.name}</h1>;
+}
+```
+
+# props和state的区别
+state 和 props 之间最重要的区别是：props 由父组件传入，而 state 由组件本身管理。组件不能修改 props，但它可以修改 state。
+

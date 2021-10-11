@@ -6,3 +6,5 @@
 
 
 * [file-checksum](https://www.npmjs.com/package/file-checksum): 文件md5
+
+* [iconv-lite](https://www.npmjs.com/package/iconv-lite): 字节流转换
