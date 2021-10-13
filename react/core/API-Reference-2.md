@@ -100,3 +100,10 @@ document.getElementsByTagName('a')[0].tabIndex    // 小驼峰
 
 # 合成事件
 
+`SyntheticEvent` 实例将被传递给你的事件处理函数，它是浏览器的原生事件的跨浏览器包装器。
+除兼容所有浏览器外，它还拥有和浏览器原生事件相同的接口，包括 `stopPropagation()` 和 `preventDefault()`。
+
+如需使用浏览器的底层事件时，只需要使用 `nativeEvent` 属性来获取即可。
+
+需注册捕获阶段的事件处理函数，则应为事件名添加 Capture。例如，处理捕获阶段的点击事件请使用 `onClickCapture`，而不是 `onClick`。
+

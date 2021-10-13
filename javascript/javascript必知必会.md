@@ -3,7 +3,8 @@
 https://developer.mozilla.org/zh-CN/docs/Web/API/Event
 target
 currenttarget
-
+冒泡、捕获
+JavaScript 的闭包机制
 
 # 常用方法
 
