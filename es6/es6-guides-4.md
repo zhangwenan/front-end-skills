@@ -383,5 +383,106 @@ for (let i of arr) {
 }
 ```
 
+##  entries()、keys()、values()
 
+* entries() 返回一个遍历器对象，用来遍历`[键名, 键值]`组成的数组。对于数组，键名就是索引值；对于 Set，键名与键值相同。Map 结构的 Iterator 接口，默认就是调用entries方法。
+* keys() 返回一个遍历器对象，用来遍历所有的键名。
+* values() 返回一个遍历器对象，用来遍历所有的键值。
+
+并不是所有类似数组的对象都具有 Iterator 接口，当它没有Iterator接口时，一个简便的解决方法，就是使用`Array.from`方法将其转为数组。
+
+```
+let arrayLike = { length: 2, 0: 'a', 1: 'b' };
+
+// 报错
+for (let x of arrayLike) {
+  console.log(x);
+}
+
+// 正确
+for (let x of Array.from(arrayLike)) {
+  console.log(x);
+}
+```
+
+
+##  对象
+```
+let es6 = {
+  edition: 6,
+  committee: "TC39",
+  standard: "ECMA-262"
+};
+
+for (let e of es6) {
+  console.log(e);
+}
+// TypeError: es6[Symbol.iterator] is not a function
+```
+
+对象未部署 Iterator接口的时候，无法使用 `for...of`进行遍历。
+一种解决方法是，使用Object.keys方法将对象的键名生成一个数组，然后遍历这个数组。
+
+```
+for(let key of Object.keys(someObj)) {
+  console.log(someObj[key])
+}
+```
+
+另一个方法是使用 Generator 函数将对象重新包装一下。
+```
+const obj = { a: 1, b: 2, c: 3 }
+
+function* entries(obj) {
+  for (let key of Object.keys(obj)) {
+    yield [key, obj[key]];
+  }
+}
+
+for (let [key, value] of entries(obj)) {
+  console.log(key, '->', value);
+}
+// a -> 1
+// b -> 2
+// c -> 3
+```
+
+##  各种遍历方法的对比
+
+最原始的写法就是for循环。
+```
+for (var index = 0; index < myArray.length; index++) {
+  console.log(myArray[index]);
+}
+```
+
+for循环写法比较麻烦，因此数组提供内置的forEach方法。
+```
+myArray.forEach(function (value) {
+  console.log(value);
+  // 无法中途跳出forEach循环，break命令或return命令都不能奏效。
+});
+```
+
+`for...in`循环可以遍历数组的键名。
+```
+for (var index in myArray) {
+  console.log(myArray[index]);
+}
+```
+`for...in`循环有几个缺点。
+1. 数组的键名是数字，但是，`for...in`循环是以字符串作为键名，比如“0”、“1”、“2”。
+2. `for...in`循环不仅遍历数字键名，还会遍历手动添加的其他键，甚至包括原型链上的键。
+3. 某些情况下，`for...in`循环会以任意顺序遍历键名。
+总之，`for...in`循环主要是为遍历对象而设计的，不适用于遍历数组。
+
+
+`for...of`循环。可以与break、continue和return配合使用。
+```
+for (var n of fibonacci) {
+  if (n > 1000)
+    break;
+  console.log(n);
+}
+```
 

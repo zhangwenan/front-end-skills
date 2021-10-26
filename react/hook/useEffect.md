@@ -95,6 +95,8 @@ const App = () => {
 function Counter() {
   const [count, setCount] = useState(0);
 
+  // 传递给 useEffect 的函数在每次渲染中都会有所不同。
+  // 这正是我们可以在 effect 中获取最新的 count 的值，而不用担心其过期的原因。
   useEffect(() => {
     document.title = `You clicked ${count} times`;
   });
