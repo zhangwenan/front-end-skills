@@ -1,6 +1,6 @@
 ##  Mac环境下，ssh -t无效
 
-mac已经添加了ssh key，但是，`ssh -t git@e.coding.net` 却是失败。
+mac已经添加了ssh key，但是，`ssh -T git@e.coding.net` 却是失败。
 
 解决办法如下：
 
