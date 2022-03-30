@@ -20,6 +20,15 @@ python3 -m pip list
 python3 -m pip install scrapy
 ```
 
+
+##  文件读写
+```
+import json
+
+with open('nested_list.json','r') as f:
+    data = json.loads(f.read())
+```
+
 ##  多个爬虫框架
 https://blog.csdn.net/qq_41396296/article/details/81100158
 
