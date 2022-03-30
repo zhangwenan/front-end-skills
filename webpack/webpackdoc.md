@@ -626,3 +626,4 @@ optimization: {
 
 
 
+##  Webpack Module Federation
