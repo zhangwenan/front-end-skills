@@ -18,3 +18,6 @@
 * [lightning-fs](https://github.com/isomorphic-git/lightning-fs#readme): 浏览器中的fs操作
 
 * [monaco-editor](https://microsoft.github.io/monaco-editor/playground.html#creating-the-editor-editor-basic-options): VSCode风格的代码编辑器
+
+
+* [scrape-it](https://github.com/IonicaBizau/scrape-it): http抓取
